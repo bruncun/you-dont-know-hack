@@ -1,37 +1,52 @@
 <html>
-    <head>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script type="text/javascript" src="app/gol.js"></script>
-        <style type="text/css">
-            div.conway {
-                overflow: hidden;
-                font-family: courier;
-                float: left;
-                width: 500px;
-                height: 288px;
-                background-color: #000;
-                font-size: 10px;
-            }
-        </style>
-        <script>
-            var conwayRandIntervalId = null;
+  <head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="app/gol.js"></script>
+    <style type="text/css">
+      button {
+        background-color: #fff;
+        border: 1px solid #000;
+        font-family: courier;
+        font-size: 20px;
+        margin: 15px;
+        padding: 5px 10px;
+      }
+      div.conway {
+        overflow: hidden;
+        font-family: courier;
+        width: 995px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 576px;
+        background-color: #fff;
+        font-size: 20px;
+      }
 
-            $(function() {
-                var conwayBody = $('#conway');
-                $('#resetCW').click(function() {
-                    CONWAY.resetConway(conwayRandIntervalId, conwayBody);
-                });
+      div.layout {
+        margin-top: 60px;
+        text-align: center;
+      }
+    </style>
+    <script>
+      var conwayRandIntervalId = null;
 
-                $('#startCW').click(function() {
-                    conwayRandIntervalId = CONWAY.initConway(conwayRandIntervalId, conwayBody);
-                });
-            });
-        </script>
-    </head>
-    <body>
-        <div>
-            <button id='startCW'>Random Conway's Game of Life</button> | <button id='resetCW'>Reset</button>
-            <div class='conway' id='conway'></div>
-        </div>
-    </body>
+      $(function() {
+        var conwayBody = $('#conway');
+        $('#resetCW').click(function() {
+          CONWAY.resetConway(conwayRandIntervalId, conwayBody);
+        });
+
+        $('#startCW').click(function() {
+          conwayRandIntervalId = CONWAY.initConway(conwayRandIntervalId, conwayBody);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="layout">
+      <div class='conway' id='conway'></div>
+      <br>
+      <button id='startCW'>Random</button><button id='resetCW'>Reset</button>
+    </div>
+  </body>
 </html>

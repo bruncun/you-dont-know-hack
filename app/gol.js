@@ -165,13 +165,11 @@ var CONWAY = (function() {
     var CONWAY_GLOB_MAX_Y = 23;
 
     var CONWAY_COLORS = [
-        {c: '#ff0000'},
-        {c: '#00ff00'},
-        {c: '#eeeeff'},
-        {c: '#ff00ff'},
-        {c: '#ffff00'},
-        {c: '#ffa500'},
-        {c: '#00ffff'}
+        {c: '#555'},
+        {c: '#333'},
+        {c: '#777'},
+        {c: '#000'},
+        {c: '#999'},
     ];
 
     var CONWAY_SYMBOL = ['o', 'x', 'v', 'y', 'w', 'u'];
@@ -341,7 +339,7 @@ var CONWAY = (function() {
         return setInterval(function() {
             board.step();
             draw(board, body, config);
-        }, 130);
+        }, 65);
     };
 
     return my;
