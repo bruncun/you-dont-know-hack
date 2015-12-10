@@ -1,6 +1,8 @@
 // Collection of cells
 
 var Grid = function GridConstructor (height, width) {
+  this.width = width;
+  this.height = height;
   this.cells = {};
 };
 
@@ -42,6 +44,43 @@ Grid.prototype.calculateNextState = function(x, y) {
   if (neighbors < 2) {
     delete this.cells[x][y];
   }
+
+  if (neighbors > 3) {
+    delete this.cells[x][y];
+  }
 };
+
+Grid.prototype.step = function() {
+  for (var i = 0; i < this.width; i++){
+    if (!this.cells[i]) {
+      continue;
+    }
+    for (var j = 0; j < this.height; j++){
+      this.calculateNextState(i,j);
+    }
+  }
+}
+
+Grid.prototype.renderState = function() {
+  var state = '';
+  for (var i = 0; i < this.height; i++){
+    for (var j = 0; j < this.width; j++){
+      if (this.cells[j]) {
+        console.log(j + ', ' + i + ', ' + this.cells[j][i]);
+        if (!this.cells[j][i]) {
+          state += '_';
+          continue;
+        }
+        state += this.cells[j][i] ? 'O' : '_';
+      } else {
+        state += '_';
+      }
+    }
+    if (i < this.height - 1) {
+      state += '\n';
+    }
+  }
+  return state;
+}
 
 var Cell = function CellConstructor () {};
